@@ -1,0 +1,33 @@
+{
+  "user": [
+    {
+      "id": "1",
+      "username": "test1",
+      "fullname": "John",
+      "position": "Developer",
+      "password": "admin"
+    },
+    {
+      "id": "2",
+      "username": "test2",
+      "fullname": "Ricardo",
+      "position": "Lead Engineer",
+      "password": "admin"
+    },
+    {
+      "id": "3",
+      "username": "test3",
+      "fullname": "Gol",
+      "position": "Project Manager",
+      "password": "admin"
+    },
+    {
+      "id": "4",
+      "username": "test4",
+      "fullname": "Joe",
+      "position": "Product Owner",
+      "password": "admin"
+    }
+    
+  ]
+}
