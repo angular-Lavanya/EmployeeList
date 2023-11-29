@@ -2,18 +2,18 @@ Steps Followed
 ==================
 1,  Create new application
       npx create-react-app appname
-      npm install bootstrap
-      npm i react-toastify
-2,   npm install
-3,   npm start
-4,  Implement Routing
+2,  npm install bootstrap
+3,  npm i react-toastify
+4,  npm install
+5,  npm start
+6,  Implement Routing
       npm install react-router-dom
-5,  Install Json-Server
+7,  Install Json-Server
            npm install -g json-server
-6,  Define & Run JSON Server REST API
+8,  Define & Run JSON Server REST API
       json-server --watch db.json --port 8000
-7,  Implement Employee Login
-8,  Implement Employee Listing
-9,  Implement Create Employee with validation
-10, Implement edit employee
-11, Implement Delete employee
+9,  Implement Employee Login
+10, Implement Employee Listing
+11, Implement Create Employee with validation
+12, Implement edit employee
+13, Implement Delete employee
