@@ -20,13 +20,15 @@ Steps Followed
            
 8,  Define & Run JSON Server REST API
       json-server --watch db.json --port 8000
+
+9,  Languages: React JS v18.0, Javascript, HTML, CSS
       
-9,  Implement Employee Login
+10,  Implement Employee Login
 
-10, Implement Employee Listing
+11, Implement Employee Listing
 
-11, Implement Create Employee with validation
+12, Implement Create Employee with validation
 
-12, Implement edit employee
+13, Implement edit employee
 
-13, Implement Delete employee
+14, Implement Delete employee
