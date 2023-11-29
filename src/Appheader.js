@@ -7,15 +7,15 @@ const Appheader = () => {
     const usenavigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
-        if (location.pathname === '/login' || location.pathname === '/register') {
+        if (location.pathname === '/') {
             showmenuupdateupdate(false);
         } else {
             showmenuupdateupdate(true);
-            let username = sessionStorage.getItem('username');
-            if (username === '' || username === null) {
-                usenavigate('/login');
+            let name = sessionStorage.getItem('name');
+            if (name === '' || name === null) {
+                usenavigate('/');
             } else {
-                displayusernameupdate(username);
+                displayusernameupdate(name);
             }
         }
 
@@ -24,8 +24,8 @@ const Appheader = () => {
         <div>
             {showmenu &&
                 <div className="header">
-                    <Link to={'/home'}>Welcome <b>{displayusername}</b></Link>
-                    <Link style={{ float: 'right' }} to={'/login'}>Logout</Link>
+                    <Link to={'/emplist'}>Welcome <b>{displayusername}</b></Link>
+                    <Link style={{ float: 'right' }} to={'/'}>Logout</Link>
                 </div>
             }
         </div>

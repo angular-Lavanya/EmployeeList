@@ -1,33 +1,28 @@
 {
   "user": [
     {
-      "id": "1",
-      "username": "test1",
-      "fullname": "John",
-      "position": "Developer",
-      "password": "admin"
-    },
-    {
-      "id": "2",
-      "username": "test2",
-      "fullname": "Ricardo",
+      "id": 1,
+      "name": "Tom",
+      "email": "tom@gmail.com",
+      "phone": "0449640866",
       "position": "Lead Engineer",
       "password": "admin"
     },
     {
-      "id": "3",
-      "username": "test3",
-      "fullname": "Gol",
+      "name": "Joe",
+      "email": "joe@gmail.com",
+      "phone": "0449640866",
       "position": "Project Manager",
-      "password": "admin"
+      "password": "admin",
+      "id": 2
     },
     {
-      "id": "4",
-      "username": "test4",
-      "fullname": "Joe",
-      "position": "Product Owner",
-      "password": "admin"
+      "name": "Ali",
+      "email": "ali@gmail.com",
+      "phone": "0449640866",
+      "position": "Developer",
+      "password": "admin",
+      "id": 3
     }
-    
   ]
 }

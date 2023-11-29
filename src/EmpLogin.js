@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const Login = () => {
+const EmpLogin = () => {
     const [branchID, branchIDupdate] = useState('');
-    const [username, usernameupdate] = useState('');
+    const [name, nameupdate] = useState('');
     const [password, passwordupdate] = useState('');
-    const [userrole, userroleupdate] = useState('');
 
     const usenavigate = useNavigate();
 
@@ -28,12 +27,11 @@ const Login = () => {
                 }
 
                 else {
-                    if (resp.password === password && resp.username === username) {
+                    if (resp.password === password && resp.name === name) {
                         toast.success('Success');
                         sessionStorage.setItem('branchID', branchID);
-                        sessionStorage.setItem('username', username);
-                        sessionStorage.setItem('userrole', resp.role);
-                        usenavigate('/home')
+                        sessionStorage.setItem('name', name);
+                        usenavigate('/emplist')
                     } else {
                         toast.error('Please Enter valid credentials');
                     }
@@ -44,43 +42,14 @@ const Login = () => {
         }
     }
 
-    const ProceedLoginusingAPI = (e) => {
-        e.preventDefault();
-        if (validate()) {
-            let inputobj = {
-                "branchID": branchID, "username": username,
-                "password": password
-            };
-            fetch("https://localhost:3000/User/Authenticate", {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(inputobj)
-            }).then((res) => {
-                return res.json();
-            }).then((resp) => {
-                console.log(resp)
-                if (Object.keys(resp).length === 0) {
-                    toast.error('Login failed, invalid credentials');
-                } else {
-                    toast.success('Success');
-                    sessionStorage.setItem('branchID', branchID);
-                    sessionStorage.setItem('username', username);
-                    sessionStorage.setItem('jwttoken', resp.jwtToken);
-                    usenavigate('/home')
-                }
 
-            }).catch((err) => {
-                toast.error('Login Failed due to :' + err.message);
-            });
-        }
-    }
     const validate = () => {
         let result = true;
         if (branchID === '' || branchID === null) {
             result = false;
             toast.warning('Please Enter BranchID');
         }
-        if (username === '' || username === null) {
+        if (name === '' || name === null) {
             result = false;
             toast.warning('Please Enter UserName');
         }
@@ -105,7 +74,7 @@ const Login = () => {
                             </div>
                             <div className="form-group">
                                 <label>User Name<span className="errmsg">*</span></label>
-                                <input value={username} onChange={e => usernameupdate(e.target.value)} className="form-control"></input>
+                                <input value={name} onChange={e => nameupdate(e.target.value)} className="form-control"></input>
                             </div>
                             <div className="form-group">
                                 <label>Password <span className="errmsg">*</span></label>
@@ -123,4 +92,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default EmpLogin;

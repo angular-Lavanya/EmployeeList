@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './Home';
-import Login from './Login';
+import EmpList from './EmpList';
+import EmpLogin from './EmpLogin';
 import { ToastContainer } from 'react-toastify';
 import Appheader from './Appheader';
-import EmployeeCreate from './EmployeeCreate';
+import EmpCreate from './EmpCreate';
+import EmpEdit from './EmpEdit';
 
 
 function App() {
@@ -15,10 +16,10 @@ function App() {
       <BrowserRouter>
         <Appheader></Appheader>
         <Routes>
-          <Route path='/home' element={<Home />}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/employeecreate' element={<EmployeeCreate />}></Route>
-
+          <Route path='/emplist' element={<EmpList />}></Route>
+          <Route path='/' element={<EmpLogin />}></Route>
+          <Route path='/empcreate' element={<EmpCreate />}></Route>
+          <Route path='/empedit/:empid' element={<EmpEdit />}></Route>
         </Routes>
 
       </BrowserRouter>

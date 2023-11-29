@@ -1,12 +1,28 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
-const Home = () => {
+
+const EmpList = () => {
 
     const usenavigate = useNavigate();
 
     const [custlist, custupdate] = useState([]);
+
+    const LoadEdit = (id) => {
+        usenavigate("/empedit/" + id);
+    }
+    const Removefunction = (id) => {
+        if (window.confirm('Do you want to remove?')) {
+            fetch("http://localhost:8000/user/" + id, {
+                method: "DELETE"
+            }).then((res) => {
+                alert('Removed successfully.')
+                window.location.reload();
+            }).catch((err) => {
+                console.log(err.message)
+            })
+        }
+    }
 
     useEffect(() => {
         loadcustomer();
@@ -25,26 +41,8 @@ const Home = () => {
 
         });
     }
-   
-    const id = sessionStorage.getItem('branchID') != null ? sessionStorage.getItem('branchID').toString() : '';
-    const deleteEmployee = (e, id) => {
-        e.preventDefault();
-        const thisClicked = e.currentTarget;
-        thisClicked.innerText = "Deleting...";
 
 
-        fetch("http://localhost:8000/user?branchID=" + id, {
-            method: "DELETE",
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify()
-        }).then((res) => {
-            toast.success('Deleted Successfully.')
-            thisClicked.closest("tr").remove();
-        }).catch((err) => {
-            toast.error('Failed :' + err.message);
-        });
-
-    }
     return (
         <div className="container mt-5">
             <div className="row">
@@ -53,7 +51,7 @@ const Home = () => {
 
                         <div className="card-header">
                             <h4> Employee List
-                                <Link to="/employeecreate" className="btn btn-primary float-end">Add Employee</Link>
+                                <Link to="/empcreate" className="btn btn-primary float-end">Add Employee</Link>
                             </h4>
 
                         </div>
@@ -63,10 +61,12 @@ const Home = () => {
                                 <thead>
                                     <tr>
 
-                                        <th>Branch ID</th>
+                                        <th>#</th>
                                         <th>Username</th>
-                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
                                         <th>Position</th>
+                                        <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
@@ -77,12 +77,22 @@ const Home = () => {
                                             <tr key={item.id}>
 
                                                 <td>{item.id}</td>
-                                                <td>{item.username}</td>
-                                                <td>{item.fullname}</td>
+                                                <td>{item.name}</td>
+                                                <td>{item.email}</td>
+                                                <td>{item.phone}</td>
                                                 <td>{item.position}</td>
                                                 <td>
-                                                    <button type="button" onClick={(e) => deleteEmployee(e, item.id)} className="btn btn-danger">Remove</button>
+                                                    <a onClick={() => { LoadEdit(item.id) }} className="btn btn-success">Edit</a>
+
                                                 </td>
+                                                <td>
+                                                    <td>
+                                                        <a onClick={() => { Removefunction(item.id) }} className="btn btn-danger">Remove</a>
+
+                                                    </td>
+
+                                                </td>
+
 
                                             </tr>
                                         ))
@@ -99,4 +109,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default EmpList;
